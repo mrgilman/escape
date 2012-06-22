@@ -6,6 +6,14 @@ GIT
       json
       oauth
 
+GIT
+  remote: git://github.com/mrgilman/omniauth-tripit.git
+  revision: faf0302ac83a4e8402455a39ff2337ce24b5c6c3
+  specs:
+    omniauth-tripit (0.0.1)
+      omniauth
+      omniauth-oauth
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -150,8 +158,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
-  omniauth
-  omniauth-oauth
+  omniauth-tripit!
   rails (= 3.2.6)
   rspec-rails
   sass-rails (~> 3.2.3)

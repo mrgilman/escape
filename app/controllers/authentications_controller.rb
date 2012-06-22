@@ -3,7 +3,7 @@ class AuthenticationsController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
     add_authentication(auth)
-    redirect_to tripits_path
+    redirect_to tripit_path
   end
 
   private

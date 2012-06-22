@@ -8,8 +8,7 @@ gem 'rails', '3.2.6'
 gem 'sqlite3'
 gem 'tripit', :git => 'git://github.com/flextrip/tripit.git'
 gem 'slim'
-gem 'omniauth'
-gem 'omniauth-oauth'
+gem 'omniauth-tripit', :git => 'git://github.com/mrgilman/omniauth-tripit.git'
 gem 'sorcery'
 
 
