@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   authenticates_with_sorcery!
   
   has_many :authentications
+  has_many :trips
 
   attr_accessible :email, :password, :password_confirmation
 

@@ -1,1 +1,3 @@
-trips will go here
+<% @trips.each do |trip| %>
+  <%= trip.display_name %>
+<% end %>
