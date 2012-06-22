@@ -1,4 +1,4 @@
 <% @tripits.each do |tripit| %>
-  <h3><%= tripit.display_name %></h3><%= link_to "Import this trip", new_trip_path(:id => tripit.id) %>
+  <h3><%= tripit.display_name %></h3><%= link_to "Import this trip", trips_path(:tripit_id => tripit.id), :method => :post %>
   <%= tripit.primary_location %>, <%= tripit.start_date %> - <%= tripit.end_date %><br/>
 <% end %>
