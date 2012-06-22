@@ -7,5 +7,5 @@ Escape::Application.routes.draw do
   resources :sessions
   resources :authentications
   resources :trips
-  resources :tripits
+  resource :tripit, :controller => :tripit
 end

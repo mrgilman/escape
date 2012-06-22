@@ -14,8 +14,8 @@ module OmniAuth
         request_token = consumer.get_request_token({:oauth_callback => callback_url})
         session['oauth'] ||= {}
         session['oauth'][name.to_s] = {'callback_confirmed' => request_token.callback_confirmed?, 
-                                       'request_token' => request_token.token, 
-                                       'request_secret' => request_token.secret}
+                                       'request_token'      => request_token.token, 
+                                       'request_secret'     => request_token.secret}
 
         if request_token.callback_confirmed?
           redirect request_token.authorize_url(options[:authorize_params])
