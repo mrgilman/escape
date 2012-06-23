@@ -1,3 +1,3 @@
 <% @trips.each do |trip| %>
-  <%= trip.display_name %>
+  <%= link_to trip.display_name, trip_path(trip) %>
 <% end %>
