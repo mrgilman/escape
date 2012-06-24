@@ -1,17 +1,22 @@
 class FoursquareImporter
   @queue = :foursquare_queue
 
-  def self.perform(user_id)
-    user = User.find(user_id)
-    user.foursquare_checkins.items.each do |item|
-      user.foursquare_items.find_or_create_by_foursquare_id(:foursquare_id => item.id,
-                                                            :name          => item.venue.name,
-                                                            :address       => item.venue.location.address,
-                                                            :city          => item.venue.location.city,
-                                                            :state         => item.venue.location.state,
-                                                            :country       => item.venue.location.country,
-                                                            :timestamp     => DateTime.strptime(item.createdAt.to_s, '%s'))
-
+  def self.perform
+    foursquare_authentications.each do |authentication|
+      import_checkins(authentication)
     end
   end
+
+  private
+
+  def self.foursquare_authentications
+    Authentication.where(:provider => "foursquare")
+  end
+
+  def self.import_checkins(auth)
+    auth.user.foursquare_checkins.items.each do |checkin|
+      FoursquareItem.create_from_foursquare(auth.user, checkin)
+    end
+  end
+
 end
