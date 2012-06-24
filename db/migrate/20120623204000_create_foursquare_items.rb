@@ -7,6 +7,7 @@ class CreateFoursquareItems < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :country
+      t.datetime :timestamp
       t.integer :user_id
       t.timestamps
     end

@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120623204000) do
     t.string   "city"
     t.string   "state"
     t.string   "country"
+    t.datetime "timestamp"
     t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
