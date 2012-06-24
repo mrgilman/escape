@@ -1,3 +1,5 @@
+<%= link_to "Link your FourSquare account", "/auth/foursquare" %>
+
 <% @trips.each do |trip| %>
   <%= link_to trip.display_name, trip_path(trip) %>
 <% end %>

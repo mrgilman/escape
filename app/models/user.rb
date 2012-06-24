@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  
+
   has_many :authentications
   has_many :trips
+  has_many :foursquare_items
 
   attr_accessible :email, :password, :password_confirmation
 
@@ -23,6 +24,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def foursquare_checkins
+    if foursquare_authentication
+      foursquare_client.user_checkins
+    end
+  end
+
   private
 
   def tripit_authentication
@@ -31,9 +38,18 @@ class User < ActiveRecord::Base
 
   def tripit_client
     @tripit_client ||= begin
-      client = TripIt::OAuth.new(TRIPIT_TOKEN, TRIPIT_KEY)
-      client.authorize_from_access(tripit_authentication.token, tripit_authentication.secret)
-      client
-    end
+                         client = TripIt::OAuth.new(TRIPIT_TOKEN, TRIPIT_KEY)
+                         client.authorize_from_access(tripit_authentication.token, tripit_authentication.secret)
+                         client
+                       end
   end
+
+  def foursquare_authentication
+    self.authentications.where(:provider => "foursquare").first
+  end
+
+  def foursquare_client
+    @foursquare_client ||= Foursquare2::Client.new(:oauth_token => foursquare_authentication.token)
+  end
+
 end
