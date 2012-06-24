@@ -8,4 +8,5 @@ Escape::Application.routes.draw do
   resources :authentications
   resources :trips
   resource :tripit, :controller => :tripit
+  mount Resque::Server, :at => "/resque"
 end
