@@ -15,3 +15,7 @@ body {
   background-image: url('beach.jpg');
   background-size: 100%;
 }
+
+.brand {
+  margin-left: 58px !important;
+}
