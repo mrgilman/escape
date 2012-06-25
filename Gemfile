@@ -32,6 +32,11 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'nyan-cat-formatter'
   gem 'fabrication'
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
