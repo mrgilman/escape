@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Escape</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<title>Escape</title>
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>
 </head>
 <body>
-<% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "Log out", logout_path %>
-<% else %>
-  <%= link_to "Sign up", signup_path %> or
-  <%= link_to "log in", login_path %>.
-<% end %>
-<br/>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">Escape With Me</a>
+        <ul class="nav pull-right">
+          <% if current_user %>
+            <li><%= link_to current_user.email %></li>
+            <li><%= link_to "Log out", logout_path %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 <%= yield %>
 
 </body>
