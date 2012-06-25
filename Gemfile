@@ -13,6 +13,7 @@ gem 'sorcery'
 gem 'foursquare2'
 gem 'resque', :require => "resque/server"
 gem 'resque-scheduler', :require => 'resque_scheduler'
+gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,11 +32,6 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'nyan-cat-formatter'
   gem 'fabrication'
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
 end
 
 gem 'jquery-rails'

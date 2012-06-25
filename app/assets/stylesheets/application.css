@@ -16,3 +16,6 @@ body {
   background-size: 100%;
 }
 
+.well {
+   background-color: rgba(245, 245, 245, 0.5) !important;
+}

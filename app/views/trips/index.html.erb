@@ -1,3 +1,4 @@
+<div class="span5 well">
 <% unless @trips.nil? %>
   <% @trips.each do |trip| %>
     <%= link_to trip.display_name, trip_path(trip) %><br/>
@@ -6,3 +7,4 @@
 <% else %>
   You don't have any trips yet. <%= link_to "Create your first escape.", new_trip_path %>
 <% end %>
+</div>

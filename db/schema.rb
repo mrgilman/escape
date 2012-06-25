@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20120623204000) do
   create_table "authentications", :force => true do |t|
     t.string   "provider"
     t.string   "token"
+    t.string   "uid"
     t.string   "secret"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
