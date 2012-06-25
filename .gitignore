@@ -19,3 +19,6 @@
 
 # Ingore database.yml file so that database can be configured on VPS
 /config/database.yml
+
+# Ignore coverage report.
+/coverage/

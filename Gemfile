@@ -34,6 +34,9 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'nyan-cat-formatter'
   gem 'fabrication'
+  gem 'simplecov', :require => false
+  gem 'capybara'
+  gem 'launchy'
 end
 
 gem 'jquery-rails'
