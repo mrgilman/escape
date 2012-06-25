@@ -29,6 +29,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'growl'
+  gem 'ruby_gntp'
   gem 'guard-rspec'
   gem 'nyan-cat-formatter'
   gem 'fabrication'

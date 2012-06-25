@@ -75,6 +75,7 @@ GEM
       faraday (~> 0.8)
       faraday_middleware (>= 0.8)
       hashie (~> 1.0)
+    growl (1.0.3)
     guard (1.2.1)
       listen (>= 0.4.2)
       thor (>= 0.14.6)
@@ -191,6 +192,7 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.10.0)
+    ruby_gntp (0.3.4)
     rufus-scheduler (2.0.17)
       tzinfo (>= 0.3.23)
     sass (3.1.19)
@@ -245,6 +247,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   fabrication
   foursquare2
+  growl
   guard-rspec
   jquery-rails
   mysql2
@@ -255,6 +258,7 @@ DEPENDENCIES
   resque
   resque-scheduler
   rspec-rails
+  ruby_gntp
   sass-rails (~> 3.2.3)
   slim
   sorcery
