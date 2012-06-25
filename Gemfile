@@ -5,15 +5,14 @@ gem 'rails', '3.2.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
 gem 'tripit', :git => 'git://github.com/flextrip/tripit.git'
 gem 'slim'
 gem 'omniauth-tripit', :git => 'git://github.com/mrgilman/omniauth-tripit.git'
 gem 'omniauth-foursquare'
 gem 'sorcery'
 gem 'foursquare2'
-gem 'resque', :require => "resque/server"
-gem 'resque-scheduler', :require => 'resque_scheduler'
+# gem 'resque', :require => "resque/server"
+# gem 'resque-scheduler', :require => 'resque_scheduler'
 
 # Gems used only for assets and not required
 # in production environments by default.
