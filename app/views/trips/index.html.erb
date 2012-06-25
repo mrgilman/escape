@@ -1,5 +1,8 @@
-<%= link_to "Link your FourSquare account", "/auth/foursquare" %>
-
-<% @trips.each do |trip| %>
-  <%= link_to trip.display_name, trip_path(trip) %>
+<% unless @trips.nil? %>
+  <% @trips.each do |trip| %>
+    <%= link_to trip.display_name, trip_path(trip) %><br/>
+  <% end %>
+  <br/><%= link_to "Create a new escape.", new_trip_path %>
+<% else %>
+  You don't have any trips yet. <%= link_to "Create your first escape.", new_trip_path %>
 <% end %>
