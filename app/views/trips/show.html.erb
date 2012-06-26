@@ -1,5 +1,9 @@
-<%= link_to "Link your FourSquare account to this trip", "/auth/foursquare" %>
-<h3><%= @trip.display_name %></h3>
+<div class="span5 leftcol well">
+<h1><%= @trip.display_name %></h1>
 <%= @trip.primary_location %>
 <%= @trip.start_date %>
 <%= @trip.end_date %>
+</div>
+<div class="span5 rightcol well">
+<%= link_to "Link your FourSquare account", "/auth/foursquare" %>
+</div>

@@ -1,10 +1,18 @@
-<div class="span5 well">
+<div class="span5 leftcol well">
+  <h1>My Escapes</h1><br/>
 <% unless @trips.nil? %>
   <% @trips.each do |trip| %>
     <%= link_to trip.display_name, trip_path(trip) %><br/>
   <% end %>
-  <br/><%= link_to "Create a new escape.", new_trip_path %>
 <% else %>
-  You don't have any trips yet. <%= link_to "Create your first escape.", new_trip_path %>
+  You don't have any trips yet.
 <% end %>
+</div>
+<div class="span5 rightcol well">
+  <h1>Create a new Escape</h1><br/>
+  <div class="span2 ti"><%= link_to image_tag("tripit.png"), "/auth/tripit" %><br/>
+    <%= link_to "Create an escape from TripIt", "/auth/tripit" %><br/></div>
+  <div class="span2 ls"><%= image_tag("livingsocial.png") %><br/>
+    Create an escape from LivingSocial<br/></div>
+  <div class="span3 ewm"><br/><br/><%= link_to "Create your own escape", new_trip_path, :class => 'btn'%></div>
 </div>

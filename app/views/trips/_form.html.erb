@@ -1,0 +1,16 @@
+<%= nested_form_for @trip, :html => {:multipart => true} do |f| %>
+  <%= f.label(:display_name, "Title") %>
+  <%= f.text_field :display_name %>
+  <br/>
+  <%= f.label(:primary_location, "Destination") %>
+  <%= f.text_field :primary_location %>
+  <br/>
+  <%= f.label :start_date %>
+  <%= f.text_field :start_date, :id => 'dateBegin' %>
+  <br />
+  <%= f.label :end_date %>
+  <%= f.text_field :end_date, :id => 'dateEnd' %>
+  <br/>
+  <br/>
+  <%= f.submit %>
+<% end %>

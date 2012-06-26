@@ -14,8 +14,30 @@
 body {
   background-image: url('beach.jpg');
   background-size: 100%;
+  font-size: 17px !important;
+  font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif !important;
 }
 
 .well {
    background-color: rgba(245, 245, 245, 0.5) !important;
 }
+
+
+.brand {
+  font-family: "corner-store";
+  font-size: 30px !important;
+}
+
+h1 {
+  font-family: "corner-store" !important;
+}
+
+.leftcol{
+   margin-left: -10px !important;
+}
+
+.rightcol {
+  margin-left: 140px !important;
+}
+
+

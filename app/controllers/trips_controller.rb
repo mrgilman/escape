@@ -6,13 +6,19 @@ class TripsController < ApplicationController
   end
 
   def new
+    @trip = Trip.new
   end
 
   def create
     if params[:tripit_id]
-      @trip = create_from_tripit(params[:tripit_id])
+      trip = Trip.create_from_tripit(params[:tripit_id], current_user)
+      Lodging.create_from_tripit(trip, params[:tripit_id])
+      redirect_to trip_path(trip)
+    else
+      params[:trip][:start_date], params[:trip][:end_date] = parse_date(params[:trip][:start_date]), parse_date(params[:trip][:end_date])
+      trip = current_user.trips.create(params[:trip])
+      redirect_to new_trip_lodging_path(trip)
     end
-    redirect_to trips_path
   end
 
   def show
@@ -21,11 +27,10 @@ class TripsController < ApplicationController
 
   private
 
-  def create_from_tripit(trip_id)
-    tripit_trip = current_user.tripit_trip(trip_id)
-    current_user.trips.create(:display_name     => tripit_trip.display_name,
-                              :primary_location => tripit_trip.primary_location,
-                              :start_date       => tripit_trip.start_date,
-                              :end_date         => tripit_trip.end_date)
+  def parse_date(date)
+    if date
+      Date.strptime(date, '%m/%d/%Y')
+    end
   end
+
 end

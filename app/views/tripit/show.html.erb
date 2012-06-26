@@ -1,4 +1,6 @@
+<div class="span5 leftcol well">
 <% @tripits.each do |tripit| %>
-  <h3><%= tripit.display_name %></h3><%= link_to "Import this trip", trips_path(:tripit_id => tripit.id), :method => :post %>
-  <%= tripit.primary_location %>, <%= tripit.start_date %> - <%= tripit.end_date %><br/>
+  <h1><%= tripit.display_name %></h1><%= link_to "Import this trip", trips_path(:tripit_id => tripit.id), :method => :post %>
+<%= tripit.primary_location %>, <%= tripit.start_date %> - <%= tripit.end_date %><br/><br/>
 <% end %>
+</div>
