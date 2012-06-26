@@ -42,7 +42,7 @@ describe "Sessions" do
   end
 
   describe 'DELETE /sessions' do
-    let(:user) { User.create(:email => "user@example.com", :password => "hungry") }
+    let!(:user) { User.create(:email => "user@example.com", :password => "hungry") }
 
     before do
       visit login_path
