@@ -10,7 +10,7 @@
     <% if lodging.start_date %>
       <%= lodging.start_date.to_formatted_s(:day_of_week_date) %> to <%= lodging.end_date.to_formatted_s(:day_of_week_date) %><br/>
     <% end %>
-    <strong><%= lodging.name %></strong><br/>
+    <strong><%= lodging.name %></strong><br/> <%= link_to "Edit this lodging", edit_trip_lodging_path(lodging) %>
     <%= lodging.address %><br/>
     <%= lodging.city %> <%= lodging.state %> <%= lodging.country %><br/>
     <%= lodging.phone_number %>

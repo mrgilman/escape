@@ -42,6 +42,10 @@ class TripsController < ApplicationController
     redirect_to trip_path(@trip)
   end
 
+  def destroy
+    @trip = Trip.find(params[:id])
+  end
+
   private
 
   def parse_date(date)
