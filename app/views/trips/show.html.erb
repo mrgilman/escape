@@ -1,8 +1,8 @@
 <div class="span5 leftcol well">
   <h1><%= @trip.display_name %></h1>
   <%= @trip.primary_location %>
-  <%= @trip.start_date %>
-  <%= @trip.end_date %>
+  <%= @trip.start_date.to_formatted_s(:day_of_week_date) %> to 
+  <%= @trip.end_date.to_formatted_s(:day_of_week_date) %>
   <br/><br/>
   <% @lodgings.each do |lodging| %>
     <%= lodging.name %><br/>
@@ -15,10 +15,14 @@
 </div>
 <div class="span5 rightcol well">
   <% if foursquare_authentication? %>
-    <% @checkins.each do |checkin| %>
-      <%= checkin.name %><br/>
-      <%= checkin.address %><br/>
-      <%= checkin.city %>, <%= checkin.state %> <%= checkin.country %><br/><br/>
+    <% if @checkins.empty? %>
+      No checkins yet.
+    <% else %>
+      <% @checkins.each do |checkin| %>
+        <%= checkin.name %><br/>
+        <%= checkin.address %><br/>
+        <%= checkin.city %>, <%= checkin.state %> <%= checkin.country %><br/><br/>
+      <% end %>
     <% end %>
   <% else %>
     <div class="span2 fs"><%= link_to image_tag("connect-foursquare.png"), "/auth/foursquare" %><br/></div>
