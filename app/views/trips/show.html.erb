@@ -1,5 +1,5 @@
 <div class="span5 leftcol well">
-  <h1><%= @trip.display_name %></h1>
+  <div class="row"><div class="span4"><h1><%= @trip.display_name %></h1></div> <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) %></span></div></div>
   <%= @trip.primary_location %><br/>
   <% if @trip.start_date %>
     <%= @trip.start_date.to_formatted_s(:day_of_week_date) %> to 
@@ -10,13 +10,12 @@
     <% if lodging.start_date %>
       <%= lodging.start_date.to_formatted_s(:day_of_week_date) %> to <%= lodging.end_date.to_formatted_s(:day_of_week_date) %><br/>
     <% end %>
-    <strong><%= lodging.name %></strong><br/> <%= link_to "Edit this lodging", edit_trip_lodging_path(lodging) %>
+    <strong><%= lodging.name %></strong> &nbsp; <span class="edit"><%= link_to "Edit", edit_trip_lodging_path(@trip, lodging) %><br/></span>
     <%= lodging.address %><br/>
     <%= lodging.city %> <%= lodging.state %> <%= lodging.country %><br/>
     <%= lodging.phone_number %>
     <br/><br/>
   <% end %>
-  <%= link_to "Edit this trip", edit_trip_path(@trip) %>
 </div>
 <div class="span5 rightcol well">
   <% if foursquare_authentication? %>

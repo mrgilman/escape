@@ -1,5 +1,6 @@
 class TripsController < ApplicationController
   before_filter :require_login
+  before_filter :find_trip, :only => [:show, :edit, :update, :destroy]
 
   def index
     @trips = current_user.trips
@@ -25,7 +26,6 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trip = Trip.find(params[:id])
     lodgings = Lodging.where(:trip_id => params[:id])
     @lodgings = lodgings.sort_by{|d| d[:start_date]}
     checkins = FoursquareItem.find_in_range(params[:id])
@@ -33,17 +33,15 @@ class TripsController < ApplicationController
   end
 
   def edit
-    @trip = Trip.find(params[:id])
   end
 
   def update
-    @trip = Trip.find(params[:id])
+    params[:trip][:start_date], params[:trip][:end_date] = parse_date(params[:trip][:start_date]), parse_date(params[:trip][:end_date])
     @trip.update_attributes(params[:trip])
     redirect_to trip_path(@trip)
   end
 
   def destroy
-    @trip = Trip.find(params[:id])
   end
 
   private
@@ -54,4 +52,7 @@ class TripsController < ApplicationController
     end
   end
 
+  def find_trip
+    @trip = Trip.find(params[:id])
+  end
 end
