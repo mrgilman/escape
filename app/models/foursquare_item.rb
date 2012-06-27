@@ -14,7 +14,8 @@ class FoursquareItem < ActiveRecord::Base
 
   end
 
-  def self.find_in_range(user, date1, date2)
-    user.foursquare_items.where(:timestamp => date1..date2)
+  def self.find_in_range(trip_id)
+    trip = Trip.find(trip_id)
+    trip.user.foursquare_items.where(:timestamp => trip.start_date..trip.end_date)
   end
 end

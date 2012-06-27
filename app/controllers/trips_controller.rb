@@ -25,6 +25,8 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     lodgings = Lodging.where(:trip_id => params[:id])
     @lodgings = lodgings.sort_by{|d| d[:start_date]}
+    checkins = FoursquareItem.find_in_range(params[:id])
+    @checkins = checkins.sort_by{|d| d[:start_date]}.reverse
   end
 
   private
