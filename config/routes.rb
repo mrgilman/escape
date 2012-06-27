@@ -11,5 +11,6 @@ Escape::Application.routes.draw do
     resources :lodgings
   end
   resource :tripit, :controller => :tripit
+  resource :livingsocial, :controller => :livingsocial
   mount Resque::Server, :at => "/resque"
 end

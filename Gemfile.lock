@@ -14,12 +14,6 @@ GIT
       omniauth
       omniauth-oauth
 
-GIT
-  remote: https://github.com/ryanb/nested_form.git
-  revision: 504985118c2205f36e42417e6d99cecf23385290
-  specs:
-    nested_form (0.2.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -286,7 +280,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   mysql2
-  nested_form!
+  nokogiri
   nyan-cat-formatter
   omniauth-foursquare
   omniauth-tripit!

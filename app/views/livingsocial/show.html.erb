@@ -1,0 +1,7 @@
+<div class="span5 leftcol well">
+  Enter a link to a LivingSocial Escape to automatically create a new itinerary.<br/>
+  <%= form_tag('/trips', :method => :post) do %>
+    <%= text_field_tag 'livingsocial' %>
+    <%= submit_tag %>
+  <% end %>
+</div>

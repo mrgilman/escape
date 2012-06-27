@@ -14,7 +14,7 @@ gem 'foursquare2'
 gem 'resque', :require => "resque/server"
 gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'mysql2'
-gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
+gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.

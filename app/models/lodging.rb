@@ -14,8 +14,13 @@ class Lodging < ActiveRecord::Base
                            :start_date   => lodging.start_date_time,
                            :end_date     => lodging.end_date_time)
     end
+  end
 
-    private
-
+  def self.create_from_livingsocial(trip, scrape)
+    trip.lodgings.create(:name         => scrape.name,
+                         :address      => scrape.address,
+                         :city         => scrape.city,
+                         :state        => scrape.state,
+                         :phone_number => scrape.phone_number)
   end
 end
