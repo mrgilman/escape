@@ -23,6 +23,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    lodgings = Lodging.where(:trip_id => params[:id])
+    @lodgings = lodgings.sort_by{|d| d[:start_date]}
   end
 
   private
