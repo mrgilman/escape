@@ -13,4 +13,8 @@ class FoursquareItem < ActiveRecord::Base
                                                           :timestamp     => DateTime.strptime(checkin.createdAt.to_s, '%s'))
 
   end
+
+  def self.find_in_range(user, date1, date2)
+    user.foursquare_items.where(:timestamp => date1..date2)
+  end
 end
