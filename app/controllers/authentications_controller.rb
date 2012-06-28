@@ -1,5 +1,4 @@
 class AuthenticationsController < ApplicationController
-  before_filter :require_login
 
   def create
     auth = request.env['omniauth.auth']

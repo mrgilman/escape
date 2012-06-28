@@ -1,6 +1,7 @@
 class LodgingsController < ApplicationController
   before_filter :find_trip
   before_filter :find_lodging, :only => [:edit, :update, :destroy]
+  before_filter :require_login
 
   def new
     @lodging = Lodging.new
