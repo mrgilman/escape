@@ -6,27 +6,27 @@ describe "Sessions" do
 
     it "creates a new session for a valid user" do
       visit login_path
-      fill_in "Email", :with => "user@example.com"
-      fill_in "Password", :with => "hungry"
-      click_button "Log in"
+      fill_in "email", :with => "user@example.com"
+      fill_in "password", :with => "hungry"
+      click_button "Sign In"
       current_path.should == trips_path
       page.should have_content("user@example.com")
     end
 
     it "does not create a session with invalid email address" do
       visit login_path
-      fill_in "Email", :with => "not_this_user@example.com"
-      fill_in "Password", :with => "hungry"
-      click_button "Log in"
+      fill_in "email", :with => "not_this_user@example.com"
+      fill_in "password", :with => "hungry"
+      click_button "Sign In"
       current_path.should == sessions_path
       page.should_not have_content("user@example.com")
     end
 
     it "does not create a session with an invalid password" do
       visit login_path
-      fill_in "Email", :with => "user@example.com"
-      fill_in "Password", :with => "not_hungry"
-      click_button "Log in"
+      fill_in "email", :with => "user@example.com"
+      fill_in "password", :with => "not_hungry"
+      click_button "Sign In"
       current_path.should == sessions_path
       page.should_not have_content("user@example.com")
     end
@@ -46,9 +46,9 @@ describe "Sessions" do
 
     before do
       visit login_path
-      fill_in "Email", :with => "user@example.com"
-      fill_in "Password", :with => "hungry"
-      click_button "Log in"
+      fill_in "email", :with => "user@example.com"
+      fill_in "password", :with => "hungry"
+      click_button "Sign In"
     end
 
     it "destroys a user's session" do

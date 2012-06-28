@@ -14,7 +14,7 @@
   <div class="navbar">
     <div class="navbar-inner">
       <div class="container">
-        <a class="brand span3" href="#">Escape-With.me</a>
+        <%= link_to "Escape-With.me", root_path, :class => "brand span3" %>
         <ul class="nav pull-right">
           <% if current_user %>
             <li><%= link_to current_user.email %></li>
