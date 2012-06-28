@@ -1,4 +1,4 @@
-<%= nested_form_for @trip, :html => {:multipart => true} do |f| %>
+<%= form_for @trip, :html => {:multipart => true} do |f| %>
   <%= f.label(:display_name, "Title") %>
   <%= f.text_field :display_name %>
   <br/>
