@@ -16,7 +16,9 @@ class TripsController < ApplicationController
       Lodging.create_from_tripit(trip, params[:tripit_id])
       redirect_to trip_path(trip)
     elsif params[:livingsocial]
-      trip = Trip.create_from_livingsocial(params[:livingsocial], current_user)
+      scrape = Scraper.new(params[:livingsocial])
+      trip = Trip.create_from_livingsocial(scrape, current_user)
+      lodging = Lodging.create_from_livingsocial(scrape, trip)
       redirect_to edit_trip_path(trip)
     else
       params[:trip][:start_date], params[:trip][:end_date] = parse_date(params[:trip][:start_date]), parse_date(params[:trip][:end_date])

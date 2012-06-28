@@ -12,12 +12,10 @@ class Trip < ActiveRecord::Base
                       :end_date         => tripit_trip.end_date)
   end
 
-  def self.create_from_livingsocial(url, user)
-    scrape = Scraper.new(url)
+  def self.create_from_livingsocial(scrape, user)
     trip = user.trips.create(:display_name     => scrape.display_name,
                              :primary_location => scrape.primary_location,
                              :description      => scrape.description)
-    Lodging.create_from_livingsocial(trip, scrape)
   end
 
 

@@ -12,7 +12,7 @@
     <% end %>
     <strong><%= lodging.name %></strong> &nbsp; <span class="edit"><%= link_to "Edit", edit_trip_lodging_path(@trip, lodging) %><br/></span>
     <%= lodging.address %><br/>
-    <%= lodging.city %> <%= lodging.state %> <%= lodging.country %><br/>
+    <%= lodging.city %>, <%= lodging.state %> <%= lodging.country %><br/>
     <%= lodging.phone_number %>
     <br/><br/>
   <% end %>

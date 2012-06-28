@@ -11,8 +11,8 @@ class Scraper
     self.description = doc.css('.highlights ul li').text.gsub("\n","--")
     self.phone_number = doc.css('.meta .phone').text.gsub("|","")
     self.address = doc.css('.meta .street_1').text.gsub("\n","--")
-    self.city = puts doc.css('.deal-title p').text.split(%r{\W{2,}})[-2]
-    self.state = puts doc.css('.deal-title p').text.split(",")[-1].strip
+    self.city = doc.css('.deal-title p').text.split(%r{\W{2,}})[-2]
+    self.state = doc.css('.deal-title p').text.split(",")[-1].strip
   end
 
 end
