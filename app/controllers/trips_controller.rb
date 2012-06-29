@@ -21,7 +21,6 @@ class TripsController < ApplicationController
       lodging = Lodging.create_from_livingsocial(scrape, trip)
       redirect_to edit_trip_path(trip)
     else
-      params[:trip][:start_date], params[:trip][:end_date] = parse_date(params[:trip][:start_date]), parse_date(params[:trip][:end_date])
       trip = current_user.trips.create(params[:trip])
       redirect_to new_trip_lodging_path(trip)
     end
@@ -38,7 +37,6 @@ class TripsController < ApplicationController
   end
 
   def update
-    params[:trip][:start_date], params[:trip][:end_date] = parse_date(params[:trip][:start_date]), parse_date(params[:trip][:end_date])
     @trip.update_attributes(params[:trip])
     redirect_to trip_path(@trip)
   end

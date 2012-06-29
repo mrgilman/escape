@@ -8,7 +8,6 @@ class LodgingsController < ApplicationController
   end
 
   def create
-    params[:lodging][:start_date], params[:lodging][:end_date] = parse_date(params[:lodging][:start_date]), parse_date(params[:lodging][:end_date])
     @lodging = @trip.lodgings.create(params[:lodging])
     redirect_to trips_path
   end
@@ -17,7 +16,6 @@ class LodgingsController < ApplicationController
   end
 
   def update
-    params[:lodging][:start_date], params[:lodging][:end_date] = parse_date(params[:lodging][:start_date]), parse_date(params[:lodging][:end_date])
     @lodging.update_attributes(params[:lodging])
     redirect_to trip_path(@trip)
   end
