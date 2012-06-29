@@ -35,10 +35,4 @@ class LodgingsController < ApplicationController
     @lodging = Lodging.find(params[:id])
   end
 
-   def parse_date(date)
-    if date
-      Date.strptime(date, '%m/%d/%Y')
-    end
-  end
-
 end
