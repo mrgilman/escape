@@ -1,5 +1,5 @@
 <div class="span5 leftcol well">
-  <h1>My Escapes</h1><br/>
+  <h1>My Escapes</h1><br/><br/>
 <% unless @trips.empty? %>
   <% @trips.each do |trip| %>
     <%= link_to trip.display_name, trip_path(trip) %><br/>
@@ -9,7 +9,7 @@
 <% end %>
 </div>
 <div class="span5 rightcol well">
-  <h1>Create a new Escape</h1><br/>
+  <h1>Create a new Escape</h1><br/><br/>
   <div class="span2 ti"><%= link_to image_tag("tripit.png"), "/auth/tripit" %><br/>
     <%= link_to "Create an escape from TripIt", "/auth/tripit" %><br/></div>
   <div class="span2 ls"><%= link_to image_tag("livingsocial.png"), livingsocial_path %><br/>
