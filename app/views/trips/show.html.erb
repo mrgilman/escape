@@ -22,11 +22,21 @@
     <div class="span2 fs"><%= link_to image_tag("connect-foursquare.png"), "/auth/foursquare" %><br/></div>
     <div class="span2 fst">Connect your foursquare account to keep track of where you go on your Escape.</div>
   <% elsif !@checkins.empty? %>
-    <% @checkins.each do |checkin| %>
-      <%= checkin.name %><br/>
-      <%= checkin.address %><br/>
-      <%= checkin.city %>, <%= checkin.state %> <%= checkin.country %><br/><br/>
-    <% end %>
+    <table class="table">
+      <% @checkins.each do |checkin| %>
+        <tr>
+          <td><%= image_tag("foursquare-small.png") %></td>
+          <td><%= checkin.name %><br/>
+            <%= checkin.address %><br/>
+            <%= checkin.city %>, <%= checkin.state %> <%= checkin.country %><br/>
+            <% if checkin.comment %>
+              <br/><%= checkin.comment %>
+          <% end %>
+          <td><span class="date"><%= checkin.timestamp.to_formatted_s(:date_and_time) %></span></td>
+           </td>
+        </tr>
+      <% end %>
+    </table>
   <% else %>
     No foursquare checkins yet.
   <% end %>
