@@ -4,6 +4,7 @@ class Trip < ActiveRecord::Base
   accepts_nested_attributes_for :lodgings
   attr_accessible :display_name, :primary_location, :description, :start_date, :end_date
   validates :display_name, :presence => true
+  validates :primary_location, :presence => true
 
   def self.create_from_tripit(tripit_id, user)
     tripit_trip = user.tripit_trip(tripit_id)

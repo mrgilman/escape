@@ -1,5 +1,5 @@
 <%= form_for [@trip, @lodging] do |f| %>
-  <%= f.label(:name, "Enter the name of the hotel") %>
+  <%= f.label(:name) %>
   <%= f.text_field :name %>
   <br/>
   <%= f.label :address %>
@@ -23,6 +23,6 @@
   <%= f.label :end_date %>
   <%= f.text_field :end_date, :id => 'dateEnd' %>
   <br/>
-  <%= f.submit %>
+  <%= f.submit "Submit", :class => 'btn btn-info' %>
 <% end %>
 

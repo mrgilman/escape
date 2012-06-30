@@ -1,5 +1,6 @@
 <div class="span5 leftcol well">
-  <h1>Where are you staying?</h1>
-  <br/>
+  <h1>Where are you staying?</h1><br/>
+  <%= link_to "Skip this step", trip_path(params[:trip_id]) %>
+  <br/><br/>
   <%= render :partial => "form" %>
 </div>
