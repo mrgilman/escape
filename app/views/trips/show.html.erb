@@ -12,7 +12,7 @@
     <% end %>
     <strong><%= lodging.name %></strong> &nbsp; <span class="edit"><%= link_to "Edit", edit_trip_lodging_path(@trip, lodging) %><br/></span>
     <%= lodging.address %><%= tag('br') if lodging.address %>
-    <%= lodging.city %><%= ',' if lodging.city && lodging.state %><%= lodging.state %> <%= lodging.country %><%= tag('br') if lodging.address %>
+    <%= lodging.city %><%= ',' unless lodging.city.blank? || lodging.state.blank? %><%= lodging.state %> <%= lodging.country %><%= tag('br') unless lodging.state.blank? && lodging.state.blank? && lodging.country.blank? %>
     <%= lodging.phone_number %>
     <br/><br/>
   <% end %>
