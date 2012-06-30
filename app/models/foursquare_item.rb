@@ -1,5 +1,6 @@
 class FoursquareItem < ActiveRecord::Base
   belongs_to :user
+  default_scope :order => 'timestamp DESC'
 
   attr_accessible :foursquare_id, :name, :address, :city, :state, :country, :timestamp, :comment
 

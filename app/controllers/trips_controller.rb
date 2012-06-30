@@ -1,5 +1,4 @@
 class TripsController < ApplicationController
-  before_filter :find_trip, :only => [:show, :edit, :update, :destroy]
   before_filter :require_login, :except => :show
   authorize_resource
 
@@ -33,26 +32,22 @@ class TripsController < ApplicationController
   end
 
   def show
-    lodgings = Lodging.where(:trip_id => params[:id])
-    @lodgings = lodgings.sort_by{|d| d[:start_date]}
-    checkins = FoursquareItem.find_in_range(params[:id])
-    @checkins = checkins.sort_by{|d| d[:start_date]}.reverse
+    @trip = Trip.find(params[:id])
+    @lodgings = Lodging.where(:trip_id => params[:id])
+    @checkins = FoursquareItem.find_in_range(params[:id])
   end
 
   def edit
+    @trip = Trip.find(params[:id])
   end
 
   def update
+    @trip = Trip.find(params[:id])
     @trip.update_attributes(params[:trip])
     redirect_to trip_path(@trip)
   end
 
   def destroy
-  end
-
-  private
-
-  def find_trip
     @trip = Trip.find(params[:id])
   end
 end

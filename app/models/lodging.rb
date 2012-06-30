@@ -1,5 +1,6 @@
 class Lodging < ActiveRecord::Base
   belongs_to :trip
+  default_scope :order => 'start_date ASC'
   attr_accessible :name, :address, :city, :state, :country, :phone_number, :start_date, :end_date
   validates :name, :presence => true
 

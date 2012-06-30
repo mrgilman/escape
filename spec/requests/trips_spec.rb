@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Trips" do
   let!(:user) { User.create(:email => "user@example.com", :password => "hungry") }
   let!(:trip1) { user.trips.create(:display_name => "Trip 1", :primary_location => "Anywhere", :start_date => Date.today, :end_date => Date.today + 3) }
-  let!(:trip2) { user.trips.create(:display_name => "Trip 2") }
+  let!(:trip2) { user.trips.create(:display_name => "Trip 2", :primary_location => "Anyplace") }
 
   let!(:user2) { User.create(:email => "another_user@example.com", :password => "hungry") }
   let!(:trip3) { user2.trips.create(:display_name => "Trip 3") }
@@ -43,9 +43,10 @@ describe "Trips" do
       visit trips_path
       click_link "Create your own escape"
       fill_in "Title", :with => "New trip"
-      fill_in "trip[start_date]", :with => "07/01/2012"
-      fill_in "trip[end_date]", :with => "07/08/2012"
-      click_button "Create Trip"
+      fill_in "Destination", :with => "New Place"
+      fill_in "trip[start_date]", :with => "2012-07-01"
+      fill_in "trip[end_date]", :with => "2012-07-08"
+      click_button "Submit"
       visit trips_path
       page.should have_content "New trip"
     end
@@ -144,9 +145,9 @@ describe "Trips" do
     it "updates trip info" do
       visit edit_trip_path(trip1)
       fill_in "Title", :with => "Somewhere Else"
-      fill_in "trip[start_date]", :with => "07/01/2012"
-      fill_in "trip[end_date]", :with => "07/08/2012"
-      click_button "Update Trip"
+      fill_in "trip[start_date]", :with => "2012-07-01"
+      fill_in "trip[end_date]", :with => "2012-07-08"
+      click_button "Submit"
       page.should have_content "Somewhere Else"
       page.should_not have_content "Trip 1"
     end
