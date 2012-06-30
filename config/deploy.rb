@@ -23,11 +23,11 @@ namespace :deploy do
     task command, roles: :app, except: {no_release: true} do
       run "/etc/init.d/unicorn_#{application} #{command}"
     end
-    desc "start resque scheduler"
-    task command, roles: :app do
-      run("cd #{deploy_to}/current && /usr/bin/env QUEUE=* nohup rake resque:scheduler RAILS_ENV=production &")
-      run("cd #{deploy_to}/current && /usr/bin/env QUEUE=* nohup rake resque:work RAILS_ENV=production &")
-    end
+    # desc "start resque scheduler"
+    # task command, roles: :app do
+    #   run("cd #{deploy_to}/current && /usr/bin/env QUEUE=* nohup rake resque:scheduler RAILS_ENV=production &")
+    #   run("cd #{deploy_to}/current && /usr/bin/env QUEUE=* nohup rake resque:work RAILS_ENV=production &")
+    # end
 
   end
 

@@ -1,5 +1,8 @@
 <div class="span5 leftcol well">
-  <div class="row"><div class="span4"><h1><%= @trip.display_name %></h1></div> <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) %></span></div></div>
+  <div class="row"><div class="span4"><h1><%= @trip.display_name -%></h1></div>
+    <% if @trip.user == current_user %>
+      <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) %></span></div></div>
+    <% end %>
   <%= @trip.primary_location %><br/>
   <% if @trip.start_date %>
     <%= @trip.start_date.to_formatted_s(:day_of_week_date) %> to 
