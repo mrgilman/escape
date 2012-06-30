@@ -25,8 +25,8 @@ namespace :deploy do
     end
     desc "start resque"
     task command, roles: :app do
-      run("cd #{deploy_to}/current && /usr/bin/env QUEUE=* rake resque:work RAILS_ENV=production")
-      run("cd #{deploy_to}/current && /usr/bin/env QUEUE=* rake resque:scheduler RAILS_ENV=production")
+      run("nohup cd #{deploy_to}/current && /usr/bin/env QUEUE=* rake resque:work RAILS_ENV=production")
+      run("nohup cd #{deploy_to}/current && /usr/bin/env QUEUE=* rake resque:scheduler RAILS_ENV=production")
     end
   end
 
