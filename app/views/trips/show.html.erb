@@ -16,6 +16,7 @@
     <%= lodging.phone_number %>
     <hr/>
   <% end %>
+  <%= link_to "Add a hotel", new_trip_lodging_path(@trip) %>
 </div>
 <div class="span5 rightcol small well">
   <% if @trip.user == current_user && !foursquare_authentication? %>
