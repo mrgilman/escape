@@ -1,5 +1,5 @@
-<div class="span5 leftcol well">
-  <div class="row"><div class="span4"><h1><%= @trip.display_name %></h1></div> <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) if can? :update, @trip %></span></div></div>
+<div class="span6 leftcol well">
+  <div class="row"><div class="span5"><h1><%= @trip.display_name %></h1></div> <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) if can? :update, @trip %></span></div></div>
   <%= @trip.primary_location %><br/>
   <% if @trip.start_date %>
     <%= @trip.start_date.to_formatted_s(:day_of_week_date) %> to 
@@ -14,22 +14,20 @@
     <%= lodging.address %><%= tag('br') if lodging.address %>
     <%= lodging.city %><%= ',' unless lodging.city.blank? || lodging.state.blank? %><%= lodging.state %> <%= lodging.country %><%= tag('br') unless lodging.state.blank? && lodging.state.blank? && lodging.country.blank? %>
     <%= lodging.phone_number %>
-    <br/><br/>
+    <hr/>
   <% end %>
 </div>
-<div class="span5 rightcol well">
-  <% if foursquare_authentication? %>
-    <% if @checkins.empty? %>
-      No checkins yet.
-    <% else %>
-      <% @checkins.each do |checkin| %>
-        <%= checkin.name %><br/>
-        <%= checkin.address %><br/>
-        <%= checkin.city %>, <%= checkin.state %> <%= checkin.country %><br/><br/>
-      <% end %>
-    <% end %>
-  <% else %>
+<div class="span5 rightcol small well">
+  <% if @trip.user == current_user && !foursquare_authentication? %>
     <div class="span2 fs"><%= link_to image_tag("connect-foursquare.png"), "/auth/foursquare" %><br/></div>
     <div class="span2 fst">Connect your foursquare account to keep track of where you go on your Escape.</div>
+  <% elsif !@checkins.empty? %>
+    <% @checkins.each do |checkin| %>
+      <%= checkin.name %><br/>
+      <%= checkin.address %><br/>
+      <%= checkin.city %>, <%= checkin.state %> <%= checkin.country %><br/><br/>
+    <% end %>
+  <% else %>
+    No foursquare checkins yet.
   <% end %>
 </div>

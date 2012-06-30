@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Escape</title>
-<%= stylesheet_link_tag    "application", :media => "all" %>
-<%= stylesheet_link_tag    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" %>
-<%= javascript_include_tag "application" %>
-<script type="text/javascript" src="http://use.typekit.com/ify3hoi.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-<%= csrf_meta_tags %>
-</head>
-<body>
-<div class="navbar navbar-fixed-top">
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container">
-        <%= link_to "Escape-With.me", root_path, :class => "brand span3" %>
-        <ul class="nav pull-right">
-          <% if current_user %>
-            <li><%= link_to current_user.email %></li>
-            <li><%= link_to "Log out", logout_path %></li>
-          <% else %>
-            <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-        </ul>
+  <head>
+    <title>Escape</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag    "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" %>
+    <%= javascript_include_tag "application" %>
+    <script type="text/javascript" src="http://use.typekit.com/ify3hoi.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <%= link_to "Escape-With.me", root_path, :class => "brand span3" %>
+            <ul class="nav pull-right">
+              <% if current_user %>
+                <li><%= link_to current_user.email %></li>
+                <li><%= link_to "Log out", logout_path %></li>
+              <% else %>
+                <li><%= link_to "Log in", login_path %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="container">
-<%= yield %>
-</div>
-</body>
+    <div class="container">
+      <% if flash[:notice] %>
+        <div class="span11 well flash">
+          <p class="notice"><%= flash[:notice] %></p>
+        </div>
+      <% end %>
+      <% if flash[:error] %>
+        <div class="span11 well flash">
+          <p class="error"><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
 </html>

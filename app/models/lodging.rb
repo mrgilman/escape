@@ -1,6 +1,7 @@
 class Lodging < ActiveRecord::Base
   belongs_to :trip
   attr_accessible :name, :address, :city, :state, :country, :phone_number, :start_date, :end_date
+  validates :name, :presence => true
 
   def self.create_from_tripit(trip, tripit_id)
     lodgings = trip.user.tripit_trip(tripit_id).lodgings

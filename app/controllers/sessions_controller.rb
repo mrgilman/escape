@@ -2,15 +2,15 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:email], params[:password])
     if user
-      redirect_to trips_path, :notice => "Logged in!"
+      redirect_to trips_path
     else
-      flash.now.alert = "Email or password was invalid"
+      flash[:error] = "Username or password is incorrect."
       render :new
     end
   end
 
   def destroy
     logout
-    redirect_to root_path, :notice => "Logged out!"
+    redirect_to root_path
   end
 end

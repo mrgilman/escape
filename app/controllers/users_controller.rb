@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       auto_login(@user)
-      redirect_to trips_path, :notice => "Signed up!"
+      redirect_to trips_path, :notice => "Thanks for signing up. Start by importing an Escape from TripIt or LivingSocial, or enter your own."
     else
       render :new
     end
