@@ -12,6 +12,7 @@ gem 'resque', :require => "resque/server"
 gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'mysql2'
 gem 'nokogiri'
+gem 'cancan'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

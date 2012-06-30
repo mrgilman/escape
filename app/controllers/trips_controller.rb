@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   before_filter :find_trip, :only => [:show, :edit, :update, :destroy]
   before_filter :require_login, :except => :show
+  authorize_resource
 
   def index
     @trips = current_user.trips
