@@ -10,4 +10,18 @@ class TwitterItem < ActiveRecord::Base
                                                     :timestamp  => tweet.created_at,
                                                     :utc_offset => tweet.user.utc_offset)
   end
+
+  def self.find_in_range(trip_id)
+    trip = Trip.find(trip_id)
+    trip.user.twitter_items.where(:timestamp => trip.start_date..trip.end_date)
+  end
+
+  def twitter?
+    true
+  end
+
+  def foursquare?
+    false
+  end
+
 end

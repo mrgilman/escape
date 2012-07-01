@@ -19,23 +19,27 @@
   <%= link_to "Add a hotel", new_trip_lodging_path(@trip) %>
 </div>
 <div class="span5 rightcol small well">
-  <% if !@checkins.empty? %>
+  <% if !@items.empty? %>
     <table class="table">
-      <% @checkins.each do |checkin| %>
+      <% @items.each do |item| %>
         <tr>
-          <td><%= image_tag("foursquare-small.png") %></td>
-          <td><%= checkin.name %><br/>
-            <%= checkin.address %><br/>
-            <%= checkin.city %>, <%= checkin.state %> <%= checkin.country %><br/>
-            <% if checkin.comment %>
-              <br/><%= checkin.comment %>
-          <% end %>
-          <td><span class="date"><%= checkin.timestamp.to_formatted_s(:date_and_time) %></span></td>
-           </td>
-        </tr>
-      <% end %>
-    </table>
-  <% else %>
-    No foursquare checkins yet.
-  <% end %>
+          <% if item.foursquare? %>
+            <td class="span1"><%= image_tag("foursquare.png") %></td>
+            <td><%= item.name %><br/>
+              <%= item.address %><br/>
+              <%= item.city %>, <%= item.state %> <%= item.country %><br/>
+              <% if item.comment %>
+                <br/><%= item.comment %><br/>
+            <% end %>
+        <% elsif item.twitter? %>
+          <td class="span1"><%= image_tag("twitter.png") %></td>
+          <td><%= item.text %><br/>
+        <% end %>
+        <span class="date"><%= item.timestamp.to_formatted_s(:date_and_time) %></span></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  No updates yet.
+<% end %>
 </div>

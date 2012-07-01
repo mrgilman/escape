@@ -21,4 +21,12 @@ class FoursquareItem < ActiveRecord::Base
     trip = Trip.find(trip_id)
     trip.user.foursquare_items.where(:timestamp => trip.start_date..trip.end_date)
   end
+
+  def foursquare?
+    true
+  end
+
+  def twitter?
+    false
+  end
 end

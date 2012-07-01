@@ -27,15 +27,20 @@
     <table class="table">
       <tr>
         <td><%= image_tag("twitter.png") %></td>
-        <% if twitter_authentication? %>
+        <% if !twitter_authentication? %>
           <td><%= link_to "Link your Twitter account", "/auth/twitter"  %></td>
         <% else %>
           <td>Twitter account linked.</td>
         <% end %>
       </tr>
       <tr>
-        <td><%= image_tag("foursquare-large.png") %><br/></div></td>
-      <td><%= link_to "Link your foursquare account", "/auth/foursquare" unless foursquare_authentication? %></td></tr>
-  </table>
-</div>
+        <td><%= image_tag("foursquare.png") %></td>
+        <% if !foursquare_authentication? %>
+          <td><%= link_to "Link your foursquare account", "/auth/foursquare"  %></td>
+        <% else %>
+          <td>foursquare account linked.</td>
+        <% end %>
+      </tr>
+    </table>
   </div>
+</div>

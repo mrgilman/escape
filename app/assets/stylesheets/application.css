@@ -15,6 +15,7 @@ body {
   background-image: url('beach.jpg');
   background-repeat:no-repeat;
   background-size: 100%;
+  background-attachment: fixed;
   font-size: 17px !important;
   font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif !important;
 }
