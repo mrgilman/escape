@@ -6,7 +6,7 @@ describe "Trips" do
   let!(:trip2) { user.trips.create(:display_name => "Trip 2", :primary_location => "Anyplace") }
 
   let!(:user2) { User.create(:email => "another_user@example.com", :password => "hungry") }
-  let!(:trip3) { user2.trips.create(:display_name => "Trip 3") }
+  let!(:trip3) { user2.trips.create(:display_name => "Trip 3", :primary_location => "The Moon") }
 
   describe "GET /trips" do
 
@@ -78,6 +78,32 @@ describe "Trips" do
     end
   end
 
+  describe "authorization re guest user" do
+
+    before(:each) { visit trip_path(trip1) }
+
+    it "lists display name of a trip" do
+      page.should have_content "Trip 1"
+    end
+
+    it "lists the primary location of a trip" do
+      page.should have_content "Anywhere"
+    end
+
+    it "lists the start date of a trip" do
+      page.should have_content (Date.today).to_formatted_s(:day_of_week_date)
+    end
+
+    it "lists the end date of a trip" do
+      page.should have_content (Date.today + 3).to_formatted_s(:day_of_week_date)
+    end
+
+    it "redirects to root if guest user tries to visit trips#index" do
+      visit trips_path
+      current_path.should == root_path
+    end
+  end
+
   describe "lodgings" do
     let!(:lodging1) { trip1.lodgings.create(:name => "Hotel 1") }
     let!(:lodging2) { trip1.lodgings.create(:name => "Hotel 2") }
@@ -134,6 +160,39 @@ describe "Trips" do
     end
   end
 
+  describe "twitter items" do
+    let!(:twitter1) {user.twitter_items.create(:text => "Twitter during trip", :timestamp => Date.today) }
+    let!(:twitter2) {user.twitter_items.create(:text => "Twitter before trip", :timestamp => Date.today - 1) }
+    let!(:twitter3) {user.twitter_items.create(:text => "Twitter after trip", :timestamp => Date.today + 4) }
+    let!(:twitter4) {user2.twitter_items.create(:text => "Someone else's tweet", :timestamp => Date.today) }
+    let!(:twitter_authentication) { user.authentications.create(:provider => "twitter") }
+
+    before(:each) do
+      visit login_path
+      fill_in "email", :with => "user@example.com"
+      fill_in "password", :with => "hungry"
+      click_button "Sign In"
+      visit trip_path(trip1)
+    end
+
+    it "shows twitter updates during trip" do
+      page.should have_content "Twitter during trip"
+    end
+
+    it "does not show twitter items from before trip" do
+      page.should_not have_content "Twitter before trip"
+    end
+
+    it "does not show twitter items from after trip" do
+      page.should_not have_content "Twitter after trip"
+    end
+
+    it "does not show a different user's twitter items" do
+      page.should_not have_content "Someone else's tweet"
+    end
+
+  end
+
   describe "trip update" do
     before(:each) do
       visit login_path
@@ -151,5 +210,13 @@ describe "Trips" do
       page.should have_content "Somewhere Else"
       page.should_not have_content "Trip 1"
     end
+
+    it "does not allow a user to update another user's trip" do
+      visit edit_trip_path(trip3)
+      current_path.should == trips_path
+      page.should have_content "You are not authorized to view that page."
+    end
+
   end
+
 end

@@ -1,4 +1,0 @@
-import_foursquare:
-  every: 30s
-  class: FoursquareImporter
-  queue: foursquare_queue

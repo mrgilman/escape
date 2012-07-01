@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_filter :require_login, :except => :show
-  authorize_resource
+  load_and_authorize_resource
 
   def index
     @trips = current_user.trips
