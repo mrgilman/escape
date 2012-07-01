@@ -2,7 +2,7 @@ class FoursquareItem < ActiveRecord::Base
   belongs_to :user
   default_scope :order => 'timestamp DESC'
 
-  attr_accessible :foursquare_id, :name, :address, :city, :state, :country, :timestamp, :comment
+  attr_accessible :foursquare_id, :name, :address, :city, :state, :country, :timestamp, :utc_offset, :comment
 
   def self.create_from_foursquare(user, checkin)
     user.foursquare_items.find_or_create_by_foursquare_id(:foursquare_id => checkin.id,
@@ -11,7 +11,8 @@ class FoursquareItem < ActiveRecord::Base
                                                           :city          => checkin.venue.location.city,
                                                           :state         => checkin.venue.location.state,
                                                           :country       => checkin.venue.location.country,
-                                                          :timestamp     => DateTime.strptime((checkin.createdAt + checkin.timeZoneOffset * 60).to_s, '%s'),
+                                                          :timestamp     => DateTime.strptime((checkin.createdAt).to_s, '%s'),
+                                                          :utc_offset    => checkin.timeZoneOffset,
                                                           :comment       => checkin.shout)
 
   end

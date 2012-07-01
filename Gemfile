@@ -6,6 +6,7 @@ gem 'tripit', :git => 'git://github.com/flextrip/tripit.git'
 gem 'slim'
 gem 'omniauth-tripit', :git => 'git://github.com/mrgilman/omniauth-tripit.git'
 gem 'omniauth-foursquare'
+gem 'omniauth-twitter'
 gem 'sorcery'
 gem 'foursquare2'
 gem 'resque', :require => "resque/server"
@@ -13,6 +14,7 @@ gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'mysql2'
 gem 'nokogiri'
 gem 'cancan'
+gem 'twitter'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
