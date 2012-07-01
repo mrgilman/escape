@@ -19,11 +19,7 @@
   <%= link_to "Add a hotel", new_trip_lodging_path(@trip) %>
 </div>
 <div class="span5 rightcol small well">
-  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
-  <% if @trip.user == current_user && !foursquare_authentication? %>
-    <div class="span2 fs"><%= link_to image_tag("connect-foursquare.png"), "/auth/foursquare" %><br/></div>
-    <div class="span2 fst">Connect your foursquare account to keep track of where you go on your Escape.</div>
-  <% elsif !@checkins.empty? %>
+  <% if !@checkins.empty? %>
     <table class="table">
       <% @checkins.each do |checkin| %>
         <tr>

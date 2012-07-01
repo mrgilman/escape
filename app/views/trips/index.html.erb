@@ -1,21 +1,41 @@
 <div class="span6 leftcol well">
   <h1>My Escapes</h1><br/><br/>
-<% unless @trips.empty? %>
-  <% @trips.each do |trip| %>
-    <%= link_to trip.display_name, trip_path(trip) -%>
-    <% if trip.start_date %>
-      | <%= trip.start_date.to_formatted_s(:day_of_week_date) %> to <%= trip.end_date.to_formatted_s(:day_of_week_date) %>
-  <% end %><hr/>
+  <% unless @trips.empty? %>
+    <% @trips.each do |trip| %>
+      <%= link_to trip.display_name, trip_path(trip) -%>
+      <% if trip.start_date %>
+        | <%= trip.start_date.to_formatted_s(:day_of_week_date) %> to <%= trip.end_date.to_formatted_s(:day_of_week_date) %>
+    <% end %><hr/>
   <% end %>
 <% else %>
   You don't have any trips yet.
 <% end %>
 </div>
-<div class="span5 rightcol small well">
+<div class="row span5 rightcol small well">
   <h1>Create a new Escape</h1><br/><br/>
   <div class="span2 ti"><%= link_to image_tag("tripit.png"), "/auth/tripit" %><br/>
     <%= link_to "Create an escape from TripIt", "/auth/tripit" %><br/></div>
   <div class="span2 ls"><%= link_to image_tag("livingsocial.png"), livingsocial_path %><br/>
     <%= link_to "Create an escape from LivingSocial", livingsocial_path %><br/></div>
   <div class="span3 ewm"><br/><br/><%= link_to "Create your own escape", new_trip_path, :class => 'btn'%></div>
+  <div class="span5 link">
+    <br/>
+    <hr/>
+    <br/>
+    <h1>Link Acounts</h1><br/><br/>
+    Link your social networking accounts so you and your friends can see what you're up to during your Escape.<br/><br/>
+    <table class="table">
+      <tr>
+        <td><%= image_tag("twitter.png") %></td>
+        <% if twitter_authentication? %>
+          <td><%= link_to "Link your Twitter account", "/auth/twitter"  %></td>
+        <% else %>
+          <td>Twitter account linked.</td>
+        <% end %>
+      </tr>
+      <tr>
+        <td><%= image_tag("foursquare-large.png") %><br/></div></td>
+      <td><%= link_to "Link your foursquare account", "/auth/foursquare" unless foursquare_authentication? %></td></tr>
+  </table>
 </div>
+  </div>
