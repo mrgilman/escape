@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def gravatar
+    "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}"
+  end
+
   private
 
   def tripit_authentication

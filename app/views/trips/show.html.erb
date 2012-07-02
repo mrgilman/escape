@@ -1,7 +1,7 @@
 <div class="row">
   <div class="container span6 info">
     <div class="span6 leftcol well">
-      <h1><%= @trip.user.username %>'s Escape to <%= @trip.primary_location %></h1>
+      <span class="span1 img"><%= image_tag(@trip.user.gravatar, :class => 'gravatar') %></span><span class="span4 username"><h1><%= @trip.user.username %></h1></span>
     </div>
     <div class="span6 leftcol well">
       <div class="row"><div class="span5"><h2><%= @trip.display_name %></h2></div> <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) if can? :update, @trip %></span></div></div>

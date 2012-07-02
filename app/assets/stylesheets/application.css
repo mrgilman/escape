@@ -63,3 +63,8 @@ h3 {
 .light {
   border-top: 0px !important;
 }
+
+.narrow {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
