@@ -24,4 +24,8 @@ class TwitterItem < ActiveRecord::Base
     false
   end
 
+  def instagram?
+    false
+  end
+
 end

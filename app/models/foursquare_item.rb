@@ -29,4 +29,8 @@ class FoursquareItem < ActiveRecord::Base
   def twitter?
     false
   end
+
+  def instagram?
+    false
+  end
 end
