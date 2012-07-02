@@ -36,7 +36,8 @@ class TripsController < ApplicationController
     @lodgings = Lodging.where(:trip_id => params[:id])
     checkins = FoursquareItem.find_in_range(params[:id])
     tweets = TwitterItem.find_in_range(params[:id])
-    @items = (checkins + tweets).sort_by(&:timestamp).reverse
+    photos = InstagramItem.find_in_range(params[:id])
+    @items = (checkins + tweets + photos).sort_by(&:timestamp).reverse
   end
 
   def edit

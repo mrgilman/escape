@@ -8,7 +8,7 @@ class InstagramItem < ActiveRecord::Base
     user.instagram_items.find_or_create_by_instagram_id(:instagram_id => photo.id,
                                                         :url          => photo.images.standard_resolution.url,
                                                         :location     => photo.location.try(:name),
-                                                        :caption      => photo.try(:caption),
+                                                        :caption      => photo.caption.try(:text),
                                                         :timestamp    => DateTime.strptime((photo.created_time), '%s'),
                                                         :utc_offset   => timezone(photo.location.try(:latitude,), photo.location.try(:longitude)))
   end

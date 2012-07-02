@@ -40,6 +40,15 @@
               <% elsif item.twitter? %>
                 <td class="span1"><%= image_tag("twitter.png") %></td>
                 <td><%= item.text %><br/>
+              <% elsif item.instagram? %>
+                <td class="span1"><%= image_tag("instagram.png") %></td>
+                <td><%= image_tag(item.url, :class => 'instagram') %><br/>
+                  <% if item.location %>
+                    <%= item.location %><br/>
+                  <% end %>
+                  <% if item.caption %>
+                    <%= item.caption %></br>
+                  <% end %>
                 <% end %>
                 <span class="date">
                   <% if item.utc_offset %>
@@ -47,7 +56,7 @@
                   <% else %>
                     <%= (item.timestamp).to_formatted_s(:date_and_time) %>
                   <% end %>
-                </span></td>
+              </span></td>
             </tr>
           <% end %>
         </table>
