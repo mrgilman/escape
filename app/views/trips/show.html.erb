@@ -1,48 +1,53 @@
-<div class="span11 heading well">
-  <h1><%= @trip.user.username %>'s Escape to <%= @trip.primary_location %></h1>
-</div>
-<div class="span6 leftcol well">
-  <div class="row"><div class="span5"><h2><%= @trip.display_name %></h2></div> <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) if can? :update, @trip %></span></div></div>
-  <%= @trip.primary_location -%>
-  <% if @trip.start_date %>
-    | <%= @trip.start_date.to_formatted_s(:day_of_week_date) %> to 
-    <%= @trip.end_date.to_formatted_s(:day_of_week_date) %>
-  <% end %>
-  <hr/>
-  <% @lodgings.each do |lodging| %>
-    <div class="row"><div class="span5"><strong><%= lodging.name %></strong></div><div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_lodging_path(@trip, lodging) if can? :update, @trip %></span></div></div>
-    <% if lodging.start_date %>
-      <span class="lodging-date"><%= lodging.start_date.to_formatted_s(:day_of_week_date) %> to <%= lodging.end_date.to_formatted_s(:day_of_week_date) %></span><br/><br/>
-    <% end %>
-    <%= lodging.address %><%= tag('br') if lodging.address %>
-    <%= lodging.city %><%= ',' unless lodging.city.blank? || lodging.state.blank? %><%= lodging.state %> <%= lodging.country %><%= tag('br') unless lodging.state.blank? && lodging.state.blank? && lodging.country.blank? %>
-    <%= lodging.phone_number %>
-    <hr class="light">
-  <% end %>
-  <%= link_to "Add a hotel", new_trip_lodging_path(@trip) %>
-</div>
-<div class="span5 rightcol small well">
-  <% if !@items.empty? %>
-    <table class="table">
-      <% @items.each do |item| %>
-        <tr>
-          <% if item.foursquare? %>
-            <td class="span1"><%= image_tag("foursquare.png") %></td>
-            <td><%= item.name %><br/>
-              <%= item.address %><br/>
-              <%= item.city %>, <%= item.state %> <%= item.country %><br/>
-              <% if item.comment %>
-                <br/><%= item.comment %><br/>
-            <% end %>
-        <% elsif item.twitter? %>
-          <td class="span1"><%= image_tag("twitter.png") %></td>
-          <td><%= item.text %><br/>
+<div class="row">
+  <div class="container span6 info">
+    <div class="span6 leftcol well">
+      <h1><%= @trip.user.username %>'s Escape to <%= @trip.primary_location %></h1>
+    </div>
+    <div class="span6 leftcol well">
+      <div class="row"><div class="span5"><h2><%= @trip.display_name %></h2></div> <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) if can? :update, @trip %></span></div></div>
+      <%= @trip.primary_location -%>
+      <% if @trip.start_date %>
+        | <%= @trip.start_date.to_formatted_s(:day_of_week_date) %> to 
+        <%= @trip.end_date.to_formatted_s(:day_of_week_date) %>
+      <% end %>
+      <hr/>
+      <% @lodgings.each do |lodging| %>
+        <div class="row"><div class="span5"><strong><%= lodging.name %></strong></div><div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_lodging_path(@trip, lodging) if can? :update, @trip %></span></div></div>
+        <% if lodging.start_date %>
+          <span class="lodging-date"><%= lodging.start_date.to_formatted_s(:day_of_week_date) %> to <%= lodging.end_date.to_formatted_s(:day_of_week_date) %></span><br/><br/>
         <% end %>
-        <span class="date"><%= (item.timestamp + item.utc_offset).to_formatted_s(:date_and_time) %></span></td>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
-  No updates yet.
-<% end %>
-</div>
+        <%= lodging.address %><%= tag('br') if lodging.address %>
+        <%= lodging.city %><%= ',' unless lodging.city.blank? || lodging.state.blank? %><%= lodging.state %> <%= lodging.country %><%= tag('br') unless lodging.state.blank? && lodging.state.blank? && lodging.country.blank? %>
+        <%= lodging.phone_number %>
+        <hr class="light">
+      <% end %>
+      <%= link_to "Add a hotel", new_trip_lodging_path(@trip) %>
+    </div>
+  </div>
+  <div class="span5 rightcol small items well">
+    <% if !@items.empty? %>
+      <table class="table">
+        <% @items.each do |item| %>
+          <tr>
+            <% if item.foursquare? %>
+              <td class="span1"><%= image_tag("foursquare.png") %></td>
+              <td><%= item.name %><br/>
+                <%= item.address %><br/>
+                <%= item.city %>, <%= item.state %> <%= item.country %><br/>
+                <% if item.comment %>
+                  <br/><%= item.comment %><br/>
+                <% end %>
+              <% elsif item.twitter? %>
+                <td class="span1"><%= image_tag("twitter.png") %></td>
+                <td><%= item.text %><br/>
+                <% end %>
+                <span class="date"><%= (item.timestamp + item.utc_offset).to_formatted_s(:date_and_time) %></span></td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        No updates yet.
+      <% end %>
+    </div>
+  </div>
+

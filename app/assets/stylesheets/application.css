@@ -40,10 +40,13 @@ h3 {
 
 .leftcol{
    margin-left: -10px !important;
+   margin-top: 10px !important;
+   margin-bottom: 12px !important;
 }
 
 .rightcol {
   margin-left: 140px !important;
+  margin-top: 10px !important;
 }
 
 .flash {
