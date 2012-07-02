@@ -7,6 +7,13 @@ GIT
       oauth
 
 GIT
+  remote: git://github.com/mrgilman/ask_geo.git
+  revision: 7eadebe3261131cfd9c201e31dc9d5be9c95cf1b
+  specs:
+    ask_geo (0.1.0)
+      json
+
+GIT
   remote: git://github.com/mrgilman/omniauth-tripit.git
   revision: faf0302ac83a4e8402455a39ff2337ce24b5c6c3
   specs:
@@ -141,6 +148,9 @@ GEM
       hashie (~> 1.2)
       rack
     omniauth-foursquare (0.0.7)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
+    omniauth-instagram (1.0.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
     omniauth-oauth (1.0.1)
@@ -280,20 +290,24 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ask_geo!
   cancan
   capistrano
   capybara
   coffee-rails (~> 3.2.1)
   fabrication
+  faraday
   foursquare2
   growl
   guard-rspec
+  hashie
   jquery-rails
   launchy
   mysql2
   nokogiri
   nyan-cat-formatter
   omniauth-foursquare
+  omniauth-instagram
   omniauth-tripit!
   omniauth-twitter
   rails (= 3.2.6)

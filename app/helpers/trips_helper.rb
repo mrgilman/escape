@@ -15,4 +15,12 @@ module TripsHelper
     end
   end
 
+  def instagram_authentication?
+    if current_user.authentications.where(:provider => "instagram").empty?
+      false
+    else
+      true
+    end
+  end
+
 end

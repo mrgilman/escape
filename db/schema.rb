@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702150126) do
+ActiveRecord::Schema.define(:version => 20120702211839) do
 
   create_table "authentications", :force => true do |t|
     t.string   "provider"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(:version => 20120702150126) do
     t.datetime "updated_at",    :null => false
     t.string   "comment"
     t.integer  "utc_offset"
+  end
+
+  create_table "instagram_items", :force => true do |t|
+    t.string   "instagram_id"
+    t.string   "url"
+    t.string   "location"
+    t.string   "caption"
+    t.datetime "timestamp"
+    t.integer  "utc_offset"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "lodgings", :force => true do |t|

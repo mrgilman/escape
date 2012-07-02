@@ -41,6 +41,14 @@
           <td>foursquare account linked.</td>
         <% end %>
       </tr>
+      <tr>
+        <td><%= image_tag("instagram.png") %></td>
+        <% if !instagram_authentication? %>
+          <td><%= link_to "Link your Instagram account", "/auth/instagram"  %></td>
+        <% else %>
+          <td>Instagram account linked.</td>
+        <% end %>
+      </tr>
     </table>
   </div>
 </div>

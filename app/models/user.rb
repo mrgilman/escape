@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :trips
   has_many :foursquare_items
   has_many :twitter_items
+  has_many :instagram_items
 
   attr_accessible :username, :email, :password, :password_confirmation
 
@@ -43,6 +44,12 @@ class User < ActiveRecord::Base
     "http://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(self.email.downcase)}"
   end
 
+  def instagram_photos
+    if instagram_authentication
+      InstagramConnect.instagram_photos(instagram_authentication)
+    end
+  end
+
   private
 
   def tripit_authentication
@@ -75,4 +82,9 @@ class User < ActiveRecord::Base
                                             :oauth_token => twitter_authentication.token,
                                             :oauth_token_secret => twitter_authentication.secret)
   end
+
+  def instagram_authentication
+    self.authentications.where(:provider => "instagram").first
+  end
+
 end

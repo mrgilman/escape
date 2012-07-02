@@ -7,6 +7,7 @@ gem 'slim'
 gem 'omniauth-tripit', :git => 'git://github.com/mrgilman/omniauth-tripit.git'
 gem 'omniauth-foursquare'
 gem 'omniauth-twitter'
+gem 'omniauth-instagram'
 gem 'sorcery'
 gem 'foursquare2'
 gem 'resque', :require => "resque/server"
@@ -15,6 +16,9 @@ gem 'mysql2'
 gem 'nokogiri'
 gem 'cancan'
 gem 'twitter'
+gem 'faraday'
+gem 'hashie'
+gem 'ask_geo', :git => 'git://github.com/mrgilman/ask_geo.git'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
