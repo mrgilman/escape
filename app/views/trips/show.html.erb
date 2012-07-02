@@ -8,7 +8,7 @@
   <br/><br/>
   <% @lodgings.each do |lodging| %>
     <% if lodging.start_date %>
-      <%= lodging.start_date.to_formatted_s(:day_of_week_date) %> to <%= lodging.end_date.to_formatted_s(:day_of_week_date) %><br/>
+      <u><%= lodging.start_date.to_formatted_s(:day_of_week_date) %> to <%= lodging.end_date.to_formatted_s(:day_of_week_date) %></u><br/>
     <% end %>
     <strong><%= lodging.name %></strong> &nbsp; <span class="edit"><%= link_to "Edit", edit_trip_lodging_path(@trip, lodging) if @trip.user == current_user %><br/></span>
     <%= lodging.address %><%= tag('br') if lodging.address %>
