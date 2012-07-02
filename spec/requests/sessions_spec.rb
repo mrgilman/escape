@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Sessions" do
   describe "POST /sessions" do
-    let!(:user) { User.create(:email => "user@example.com", :password => "hungry") }
+    let!(:user) { User.create(:username => "User", :email => "user@example.com", :password => "hungry") }
 
     it "creates a new session for a valid user" do
       visit login_path
@@ -42,7 +42,7 @@ describe "Sessions" do
   end
 
   describe 'DELETE /sessions' do
-    let!(:user) { User.create(:email => "user@example.com", :password => "hungry") }
+    let!(:user) { User.create(:username => "User", :email => "user@example.com", :password => "hungry") }
 
     before do
       visit login_path

@@ -41,7 +41,13 @@
                 <td class="span1"><%= image_tag("twitter.png") %></td>
                 <td><%= item.text %><br/>
                 <% end %>
-                <span class="date"><%= (item.timestamp + item.utc_offset).to_formatted_s(:date_and_time) %></span></td>
+                <span class="date">
+                  <% if item.utc_offset %>
+                    <%= (item.timestamp + item.utc_offset).to_formatted_s(:date_and_time) %>
+                  <% else %>
+                    <%= (item.timestamp).to_formatted_s(:date_and_time) %>
+                  <% end %>
+                </span></td>
             </tr>
           <% end %>
         </table>

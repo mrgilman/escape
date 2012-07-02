@@ -5,7 +5,7 @@ OmniAuth.config.test_mode = true
 describe AuthenticationsController do
   describe "#create" do
     before(:each) do
-      @user = User.create(:email => "a_user@example.com", :password => "hungry")
+      @user = User.create(:username => "A user", :email => "a_user@example.com", :password => "hungry")
       login_user
     end
 

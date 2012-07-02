@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe "Trips" do
-  let!(:user) { User.create(:email => "user@example.com", :password => "hungry") }
+  let!(:user) { User.create(:username => "User 1", :email => "user@example.com", :password => "hungry") }
   let!(:trip1) { user.trips.create(:display_name => "Trip 1", :primary_location => "Anywhere", :start_date => Date.today, :end_date => Date.today + 3) }
   let!(:trip2) { user.trips.create(:display_name => "Trip 2", :primary_location => "Anyplace") }
 
-  let!(:user2) { User.create(:email => "another_user@example.com", :password => "hungry") }
+  let!(:user2) { User.create(:username => "User 2", :email => "another_user@example.com", :password => "hungry") }
   let!(:trip3) { user2.trips.create(:display_name => "Trip 3", :primary_location => "The Moon") }
 
   describe "GET /trips" do
