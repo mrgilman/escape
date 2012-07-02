@@ -1,5 +1,8 @@
+<div class="span11 heading well">
+  <h1><%= @trip.user.username %>'s Escape to <%= @trip.primary_location %></h1>
+</div>
 <div class="span6 leftcol well">
-  <div class="row"><div class="span5"><h1><%= @trip.display_name %></h1></div> <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) if can? :update, @trip %></span></div></div>
+  <div class="row"><div class="span5"><h2><%= @trip.display_name %></h2></div> <div class="span1"><span class="edit"><%= link_to "Edit", edit_trip_path(@trip) if can? :update, @trip %></span></div></div>
   <%= @trip.primary_location -%>
   <% if @trip.start_date %>
     | <%= @trip.start_date.to_formatted_s(:day_of_week_date) %> to 
@@ -35,7 +38,7 @@
           <td class="span1"><%= image_tag("twitter.png") %></td>
           <td><%= item.text %><br/>
         <% end %>
-        <span class="date"><%= item.timestamp.to_formatted_s(:date_and_time) %></span></td>
+        <span class="date"><%= (item.timestamp + item.utc_offset).to_formatted_s(:date_and_time) %></span></td>
       </tr>
     <% end %>
   </table>

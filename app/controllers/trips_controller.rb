@@ -46,7 +46,7 @@ class TripsController < ApplicationController
   def update
     @trip = Trip.find(params[:id])
     @trip.update_attributes(params[:trip])
-    redirect_to trip_path(@trip)
+    redirect_to trips_path
   end
 
   def destroy

@@ -129,10 +129,10 @@ describe "Trips" do
 
   describe "foursquare items" do
 
-    let!(:foursquare1) {user.foursquare_items.create(:name => "Foursquare during trip", :timestamp => Date.today) }
-    let!(:foursquare2) {user.foursquare_items.create(:name => "Foursquare before trip", :timestamp => Date.today - 1) }
-    let!(:foursquare3) {user.foursquare_items.create(:name => "Foursquare after trip", :timestamp => Date.today + 4) }
-    let!(:foursquare4) {user2.foursquare_items.create(:name => "Someone else's foursquare", :timestamp => Date.today) }
+    let!(:foursquare1) {user.foursquare_items.create(:name => "Foursquare during trip", :timestamp => Date.today, :utc_offset => 0) }
+    let!(:foursquare2) {user.foursquare_items.create(:name => "Foursquare before trip", :timestamp => Date.today - 1, :utc_offset => 0) }
+    let!(:foursquare3) {user.foursquare_items.create(:name => "Foursquare after trip", :timestamp => Date.today + 4, :utc_offset => 0) }
+    let!(:foursquare4) {user2.foursquare_items.create(:name => "Someone else's foursquare", :timestamp => Date.today, :utc_offset => 0) }
     let!(:foursquare_authentication) { user.authentications.create(:provider => "foursquare") }
 
     before(:each) do
@@ -161,10 +161,10 @@ describe "Trips" do
   end
 
   describe "twitter items" do
-    let!(:twitter1) {user.twitter_items.create(:text => "Twitter during trip", :timestamp => Date.today) }
-    let!(:twitter2) {user.twitter_items.create(:text => "Twitter before trip", :timestamp => Date.today - 1) }
-    let!(:twitter3) {user.twitter_items.create(:text => "Twitter after trip", :timestamp => Date.today + 4) }
-    let!(:twitter4) {user2.twitter_items.create(:text => "Someone else's tweet", :timestamp => Date.today) }
+    let!(:twitter1) {user.twitter_items.create(:text => "Twitter during trip", :timestamp => Date.today, :utc_offset => 0) }
+    let!(:twitter2) {user.twitter_items.create(:text => "Twitter before trip", :timestamp => Date.today - 1, :utc_offset => 0) }
+    let!(:twitter3) {user.twitter_items.create(:text => "Twitter after trip", :timestamp => Date.today + 4, :utc_offset => 0) }
+    let!(:twitter4) {user2.twitter_items.create(:text => "Someone else's tweet", :timestamp => Date.today, :utc_offset => 0) }
     let!(:twitter_authentication) { user.authentications.create(:provider => "twitter") }
 
     before(:each) do

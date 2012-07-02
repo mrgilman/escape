@@ -12,7 +12,7 @@ class FoursquareItem < ActiveRecord::Base
                                                           :state         => checkin.venue.location.state,
                                                           :country       => checkin.venue.location.country,
                                                           :timestamp     => DateTime.strptime((checkin.createdAt).to_s, '%s'),
-                                                          :utc_offset    => checkin.timeZoneOffset,
+                                                          :utc_offset    => checkin.timeZoneOffset * 60,
                                                           :comment       => checkin.shout)
 
   end

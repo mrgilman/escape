@@ -56,3 +56,7 @@ h3 {
 .error_messages {
   font-size: 14px !important;
 }
+
+.light {
+  border-top: 0px !important;
+}
