@@ -5,3 +5,7 @@ FoursquareImporter:
 TwitterImporter:
   cron:  "*/5 * * * *"
   queue: twitter_queue
+
+InstagramImporter:
+  cron:  "*/5 * * * *"
+  queue: instagram_queue
