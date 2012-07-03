@@ -1,7 +1,7 @@
 <div class="span6 leftcol well">
   <%= image_tag("livingsocial.png") %><br/><br/>
   Enter a link to a <a href="http://www.livingsocial.com/escapes/" target="_blank">LivingSocial Escape</a> to automatically create a new itinerary.<br/><br/>
-  <%= form_tag('/trips', :method => :post) do %>
+  <%= form_tag('/livingsocial', :method => :post) do %>
     <%= text_field_tag 'livingsocial' %>
     <%= submit_tag "Submit", :class => 'btn btn-info' %>
   <% end %>

@@ -11,23 +11,12 @@ class TripsController < ApplicationController
   end
 
   def create
-    if params[:tripit_id]
-      trip = Trip.create_from_tripit(params[:tripit_id], current_user)
-      Lodging.create_from_tripit(trip, params[:tripit_id])
-      redirect_to trip_path(trip)
-    elsif params[:livingsocial]
-      scrape = Scraper.new(params[:livingsocial])
-      trip = Trip.create_from_livingsocial(scrape, current_user)
-      lodging = Lodging.create_from_livingsocial(scrape, trip)
-      redirect_to edit_trip_path(trip), :notice => "Enter start and end dates for your Escape."
+    @trip = current_user.trips.create(params[:trip])
+    if @trip.id
+      redirect_to new_trip_lodging_path(@trip)
     else
-      @trip = current_user.trips.create(params[:trip])
-      if @trip.id
-        redirect_to new_trip_lodging_path(@trip)
-      else
-        flash[:error] = "Trip must have title and destination."
-        render "new"
-      end
+      flash[:error] = "Trip must have title and destination."
+      render "new"
     end
   end
 
