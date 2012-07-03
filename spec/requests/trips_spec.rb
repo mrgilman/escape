@@ -128,29 +128,6 @@ describe "Trips" do
     end
   end
 
-  describe "lodgings" do
-    let!(:lodging1) { trip1.lodgings.create(:name => "Hotel 1") }
-    let!(:lodging2) { trip1.lodgings.create(:name => "Hotel 2") }
-    let!(:lodging3) { trip2.lodgings.create(:name => "Hotel 3") }
-
-    before(:each) do
-      visit login_path
-      fill_in "email", :with => "user@example.com"
-      fill_in "password", :with => "hungry"
-      click_button "Sign In"
-      visit trip_path(trip1)
-    end
-
-    it "shows all lodgings for a trip" do
-      page.should have_content "Hotel 1"
-      page.should have_content "Hotel 2"
-    end
-
-    it "does not show lodgings for other trips" do
-      page.should_not have_content "Hotel 3"
-    end
-  end
-
   describe "foursquare items" do
 
     let!(:foursquare1) {user.foursquare_items.create(:name => "Foursquare during trip", :timestamp => Date.today, :utc_offset => 0) }

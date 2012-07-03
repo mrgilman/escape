@@ -41,6 +41,22 @@ describe "Sessions" do
     end
   end
 
+  describe "logged in user" do
+    let!(:user) { User.create(:username => "User", :email => "user@example.com", :password => "hungry") }
+
+    before do
+      visit login_path
+      fill_in "email", :with => "user@example.com"
+      fill_in "password", :with => "hungry"
+      click_button "Sign In"
+    end
+
+    it "redirects from root to trips#index for logged in user" do
+      visit root_path
+      current_path.should == trips_path
+    end
+  end
+
   describe 'DELETE /sessions' do
     let!(:user) { User.create(:username => "User", :email => "user@example.com", :password => "hungry") }
 
