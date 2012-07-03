@@ -46,10 +46,34 @@ describe "Trips" do
       fill_in "Destination", :with => "New Place"
       fill_in "trip[start_date]", :with => "2012-07-01"
       fill_in "trip[end_date]", :with => "2012-07-08"
-      click_button "Submit"
+      expect { click_button "Submit" }.to change { Trip.count }.by(1)
       visit trips_path
       page.should have_content "New trip"
     end
+
+    it "does not create a new trip without a title" do
+      visit trips_path
+      click_link "Create your own escape"
+      fill_in "Destination", :with => "New Place"
+      fill_in "trip[start_date]", :with => "2012-07-01"
+      fill_in "trip[end_date]", :with => "2012-07-08"
+      expect { click_button "Submit" }.to_not change { Trip.count }.by(1)
+      visit trips_path
+      page.should have_content "Trip must have title and destination."
+    end
+
+    it "does not create a new trip without a destination" do
+      visit trips_path
+      click_link "Create your own escape"
+      fill_in "Title", :with => "New trip"
+      fill_in "trip[start_date]", :with => "2012-07-01"
+      fill_in "trip[end_date]", :with => "2012-07-08"
+      expect { click_button "Submit" }.to_not change { Trip.count }.by(1)
+      visit trips_path
+      page.should have_content "Trip must have title and destination."
+    end
+
+
   end
 
   describe "trip show" do
@@ -189,6 +213,39 @@ describe "Trips" do
 
     it "does not show a different user's twitter items" do
       page.should_not have_content "Someone else's tweet"
+    end
+
+  end
+
+  describe "instagram items" do
+    let!(:instagram1) {user.instagram_items.create(:caption => "instagram during trip", :timestamp => Date.today, :utc_offset => 0) }
+    let!(:instagram2) {user.instagram_items.create(:caption => "instagram before trip", :timestamp => Date.today - 1, :utc_offset => 0) }
+    let!(:instagram3) {user.instagram_items.create(:caption => "instagram after trip", :timestamp => Date.today + 4, :utc_offset => 0) }
+    let!(:instagram4) {user2.instagram_items.create(:caption => "Someone else's instagram", :timestamp => Date.today, :utc_offset => 0) }
+    let!(:instagram_authentication) { user.authentications.create(:provider => "instagram") }
+
+    before(:each) do
+      visit login_path
+      fill_in "email", :with => "user@example.com"
+      fill_in "password", :with => "hungry"
+      click_button "Sign In"
+      visit trip_path(trip1)
+    end
+
+    it "shows instagram updates during trip" do
+      page.should have_content "instagram during trip"
+    end
+
+    it "does not show instagram items from before trip" do
+      page.should_not have_content "instagram before trip"
+    end
+
+    it "does not show instagram items from after trip" do
+      page.should_not have_content "instagram after trip"
+    end
+
+    it "does not show a different user's instagram items" do
+      page.should_not have_content "Someone else's instagram"
     end
 
   end
