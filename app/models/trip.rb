@@ -5,6 +5,7 @@ class Trip < ActiveRecord::Base
   attr_accessible :display_name, :primary_location, :description, :start_date, :end_date
   validates :display_name, :presence => true
   validates :primary_location, :presence => true
+  default_scope :order => 'start_date ASC'
 
   def self.create_from_tripit(tripit_id, user)
     tripit_trip = user.tripit_trip(tripit_id)

@@ -4,7 +4,7 @@
     <% @trips.each do |trip| %>
       <%= link_to trip.display_name, trip_path(trip) -%>
       <% if trip.start_date %>
-        | <%= trip.start_date.to_formatted_s(:day_of_week_date) %> to <%= trip.end_date.to_formatted_s(:day_of_week_date) %>
+        | <%= trip.start_date.to_formatted_s(:day_of_week_date) %> to <%= trip.end_date.to_formatted_s(:day_of_week_date) %>, <%= trip.end_date.year %>
     <% end %><hr/>
   <% end %>
 <% else %>

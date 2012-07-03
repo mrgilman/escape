@@ -8,7 +8,7 @@
       <%= @trip.primary_location -%>
       <% if @trip.start_date %>
         | <%= @trip.start_date.to_formatted_s(:day_of_week_date) %> to 
-        <%= @trip.end_date.to_formatted_s(:day_of_week_date) %>
+        <%= @trip.end_date.to_formatted_s(:day_of_week_date) %>, <%= @trip.end_date.year %>
       <% end %>
       <hr/>
       <% @lodgings.each do |lodging| %>
@@ -17,7 +17,7 @@
           <span class="lodging-date"><%= lodging.start_date.to_formatted_s(:day_of_week_date) %> to <%= lodging.end_date.to_formatted_s(:day_of_week_date) %></span><br/><br/>
         <% end %>
         <%= lodging.address %><%= tag('br') if lodging.address %>
-        <%= lodging.city %><%= ',' unless lodging.city.blank? || lodging.state.blank? %><%= lodging.state %> <%= lodging.country %><%= tag('br') unless lodging.state.blank? && lodging.state.blank? && lodging.country.blank? %>
+        <%= lodging.city %><%= ', ' unless lodging.city.blank? || lodging.state.blank? %><%= lodging.state %> <%= lodging.country %><%= tag('br') unless lodging.state.blank? && lodging.state.blank? && lodging.country.blank? %>
         <%= lodging.phone_number %>
         <hr class="light">
       <% end %>
