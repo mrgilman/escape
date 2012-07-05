@@ -1,6 +1,7 @@
 Escape uses MySQL in development.
 
-To run, just bundle, migrate, and start the server.
+To run, bundle, migrate, and start the server.
+To run tests, rake spec.
 
 For Resque background job, start a Redis server and the following rake tasks:
 
