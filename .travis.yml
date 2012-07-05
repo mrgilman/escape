@@ -3,4 +3,5 @@ rvm:
   - 1.9.3
 before_script:
   - mysql -e 'create database escape_test;'
+  - "reke db:migrate"
   - "rake db:test:prepare"
