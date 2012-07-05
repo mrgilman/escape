@@ -17,8 +17,5 @@
 # Ignore initializers containing secret keys.
 /config/initializers/tripit_keys.rb
 
-# Ingore database.yml file so that database can be configured on VPS
-/config/database.yml
-
 # Ignore coverage report.
 /coverage/
