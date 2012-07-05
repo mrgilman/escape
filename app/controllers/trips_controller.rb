@@ -38,8 +38,4 @@ class TripsController < ApplicationController
     @trip.update_attributes(params[:trip])
     redirect_to trips_path
   end
-
-  def destroy
-    @trip = Trip.find(params[:id])
-  end
 end

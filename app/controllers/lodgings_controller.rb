@@ -11,7 +11,7 @@ class LodgingsController < ApplicationController
 
   def create
     @lodging = @trip.lodgings.create(params[:lodging])
-    redirect_to trips_path
+    redirect_to trip_path(@trip)
   end
 
   def edit
@@ -19,11 +19,6 @@ class LodgingsController < ApplicationController
 
   def update
     @lodging.update_attributes(params[:lodging])
-    redirect_to trip_path(@trip)
-  end
-
-  def destroy
-    @lodging.destroy
     redirect_to trip_path(@trip)
   end
 
