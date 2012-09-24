@@ -12,11 +12,4 @@ describe Trip do
     end
   end
 
-  describe ".create_from_livingsocial" do
-    let!(:mock_scrape) { double(:display_name => "Display Name", :primary_location => "Primary_location", :description => "description") }
-
-    it "creates a trip" do
-      expect { Trip.create_from_livingsocial(mock_scrape, user)}.to change { Trip.count }.by(1)
-    end
-  end
 end

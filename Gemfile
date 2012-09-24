@@ -4,7 +4,7 @@ gem 'rails', '3.2.6'
 
 gem 'tripit', :git => 'git://github.com/flextrip/tripit.git'
 gem 'slim'
-gem 'omniauth-tripit', :git => 'git://github.com/mrgilman/omniauth-tripit.git'
+gem 'omniauth-tripit'
 gem 'omniauth-foursquare'
 gem 'omniauth-twitter'
 gem 'omniauth-instagram'
@@ -12,7 +12,6 @@ gem 'sorcery'
 gem 'foursquare2'
 gem 'resque', :require => "resque/server"
 gem 'resque-scheduler', :require => 'resque_scheduler'
-gem 'mysql2'
 gem 'nokogiri'
 gem 'cancan'
 gem 'twitter'
@@ -37,6 +36,11 @@ group :development, :test do
   gem 'simplecov', :require => false
   gem 'capybara'
   gem 'launchy'
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'

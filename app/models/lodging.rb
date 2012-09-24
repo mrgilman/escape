@@ -18,11 +18,4 @@ class Lodging < ActiveRecord::Base
     end
   end
 
-  def self.create_from_livingsocial(scrape, trip)
-    trip.lodgings.create(:name         => scrape.name,
-                         :address      => scrape.address,
-                         :city         => scrape.city,
-                         :state        => scrape.state,
-                         :phone_number => scrape.phone_number)
-  end
 end

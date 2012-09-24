@@ -13,14 +13,6 @@ GIT
     ask_geo (0.1.0)
       json
 
-GIT
-  remote: git://github.com/mrgilman/omniauth-tripit.git
-  revision: faf0302ac83a4e8402455a39ff2337ce24b5c6c3
-  specs:
-    omniauth-tripit (0.0.1)
-      omniauth
-      omniauth-oauth
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -130,7 +122,6 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     multipart-post (1.1.5)
-    mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -159,9 +150,13 @@ GEM
     omniauth-oauth2 (1.0.0)
       oauth2 (~> 0.5.0)
       omniauth (~> 1.0)
+    omniauth-tripit (0.0.1)
+      omniauth
+      omniauth-oauth
     omniauth-twitter (0.0.11)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
+    pg (0.14.1)
     polyglot (0.3.3)
     rack (1.4.1)
     rack-cache (1.2)
@@ -255,6 +250,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.6)
     temple (0.4.0)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
@@ -303,13 +299,13 @@ DEPENDENCIES
   hashie
   jquery-rails
   launchy
-  mysql2
   nokogiri
   nyan-cat-formatter
   omniauth-foursquare
   omniauth-instagram
-  omniauth-tripit!
+  omniauth-tripit
   omniauth-twitter
+  pg
   rails (= 3.2.6)
   resque
   resque-scheduler
@@ -319,6 +315,7 @@ DEPENDENCIES
   simplecov
   slim
   sorcery
+  sqlite3
   tripit!
   twitter
   twitter-bootstrap-rails

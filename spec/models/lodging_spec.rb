@@ -14,11 +14,4 @@ describe Lodging do
     end
   end
 
-  describe ".create_from_livingsocial" do
-    let!(:mock_scrape) { double(:name => "Name", :address => "Address", :city => "city", :state => "state", :phone_number => "2022020202") }
-
-    it "creates a trip" do
-      expect { trip.lodgings.create_from_livingsocial(mock_scrape, trip) }.to change { Lodging.count }.by(1)
-    end
-  end
 end
